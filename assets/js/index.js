@@ -11,6 +11,7 @@ $(function () {
             localStorage.removeItem('token')
             //2.重新跳转到登录页面 
             location.href = '/04-阶段四%20前端后交互/后台大事件管理项目/login.html'
+            // location.href = '/login.html'
 
             // 关闭confirm 询问框
             layer.close(index);
@@ -18,33 +19,29 @@ $(function () {
     })
 })
 
-//获取用户的基本信息
+// 获取用户的基本信息
 function getUserInfo() {
     $.ajax({
         method: 'GET',
         url: '/my/userinfo',
-        //请求头配置对象
-        // headers: {
-        //     Authorization: localStorage.getItem('token') || ''
-        // },
         success: function (res) {
             if (res.status !== 0) {
                 return layui.layer.msg('获取用户信息失败！')
             }
-            //调用renderAvatar 渲染用户头像
-            console.log(res.data);
-            renderAvatar(res.data);
-        },
-        //无论成功或者是失败，最终都会调用这个complate 回调函数
-        // complete: function (res) {
-        //     console.log('执行了complete回调函数');
-        //     console.log(res);
-        //     if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
-        //         //1、强者清空token
-        //         localStorage.removeItem('token')
-        //         //2、强制跳转到登录页面
-        //         location.href = '/04-阶段四%20前端后交互/后台大事件管理项目/login.html'
-        //     }
+            // 调用 renderAvatar 渲染用户的头像
+            renderAvatar(res.data)
+        }
+        // 不论成功还是失败，最终都会调用 complete 回调函数
+        // complete: function(res) {
+        //   // console.log('执行了 complete 回调：')
+        //   // console.log(res)
+        //   // 在 complete 回调函数中，可以使用 res.responseJSON 拿到服务器响应回来的数据
+        //   if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
+        //     // 1. 强制清空 token
+        //     localStorage.removeItem('token')
+        //     // 2. 强制跳转到登录页面
+        //     location.href = '/login.html'
+        //   }
         // }
     })
 }

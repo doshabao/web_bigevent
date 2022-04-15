@@ -58,7 +58,6 @@ $(function () {
                 if (res.status !== 0) {
                     // console.log(res.message);
                     return layer.msg('登陆失败')
-
                 }
                 layer.msg('登陆成功');
                 // 将登陆成功得到的token字符串 保存到 localStorage中
@@ -66,6 +65,7 @@ $(function () {
                 console.log(res.token);
                 //跳转到后台主页
                 location.href = '/04-阶段四%20前端后交互/后台大事件管理项目/index.html'
+                // location.href = '/index.html'
             }
         })
     })
