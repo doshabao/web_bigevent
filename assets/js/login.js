@@ -37,7 +37,7 @@ $(function () {
         e.preventDefault();
         $.post('/api/reguser', { username: $('#reg_username').val(), password: $('#reg_password').val() }, function (res) {
             if (res.status !== 0) {
-                return layer.msg(res.massage)
+                return layer.msg(res.message)
             }
             layer.msg('注册成功,请登录');
             // 模拟人的点击事件
